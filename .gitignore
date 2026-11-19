@@ -1,0 +1,17 @@
+# Maven build output
+target/
+
+# Logs
+*.log
+
+# IDE files
+.idea/
+.vscode/
+
+# macOS files
+.DS_Store
+
+# Environment and secrets
+.env
+*.pem
+*.key

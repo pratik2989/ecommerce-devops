@@ -1,0 +1,20 @@
+
+package com.devops.app;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HealthController {
+
+    @GetMapping("/")
+    public String home() {
+        return "Welcome to DevOps CI/CD Project!";
+    }
+
+    @GetMapping("/api/health")
+    public String health() {
+        return "Application is UP";
+    }
+}
+

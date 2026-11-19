@@ -1,0 +1,28 @@
+
+services:
+  app:
+    image: ecommerce-devops:v1
+    ports:
+      - "8085:8080"
+    networks:
+      - ecommerce-network
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://localhost:8080/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  test-client:
+    image: alpine
+    command: sh -c "apk add --no-cache curl && sleep infinity"
+    depends_on:
+      app:
+        condition: service_healthy
+    networks:
+      - ecommerce-network
+
+networks:
+  ecommerce-network:
+    driver: bridge
+
